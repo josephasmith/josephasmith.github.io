@@ -1,0 +1,4 @@
+baseURL = 'https://josephasmith.github.io/'
+languageCode = 'en-us'
+title = 'Joseph Smith Tech Blog'
+theme = 'PaperMod'
