@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Building a Centralized Documentation Hub | Joseph Smith Tech Blog</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Recently, I wanted to refactor a centralized documentation hub I had put in place around 2 years ago, following the &lsquo;Docs as Code&rsquo; principle. At the time I thought what I had done would work really well, but it was never widely adopted, mainly due to tooling limitations. At that time there wasn&rsquo;t any other viable options, particularly with diagramming, and IDE extensions (VS Code) were non-existent.
+This small series of posts describes how I went about satisfying this requirement which will hopefully be useful to anyone else looking to do something similar, as it&rsquo;s a common issue I have come across in every place I&rsquo;ve worked.">
+    <meta name="generator" content="Hugo 0.156.0">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/posts/docs-as-code/">
+    
+
+    
+    
+    <meta property="og:url" content="http://localhost:1313/posts/docs-as-code/">
+  <meta property="og:site_name" content="Joseph Smith Tech Blog">
+  <meta property="og:title" content="Building a Centralized Documentation Hub">
+  <meta property="og:description" content="Recently, I wanted to refactor a centralized documentation hub I had put in place around 2 years ago, following the ‘Docs as Code’ principle. At the time I thought what I had done would work really well, but it was never widely adopted, mainly due to tooling limitations. At that time there wasn’t any other viable options, particularly with diagramming, and IDE extensions (VS Code) were non-existent.
+This small series of posts describes how I went about satisfying this requirement which will hopefully be useful to anyone else looking to do something similar, as it’s a common issue I have come across in every place I’ve worked.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-07-30T07:01:52+01:00">
+    <meta property="article:modified_time" content="2025-07-30T07:01:52+01:00">
+    <meta property="article:tag" content="Documentation">
+    <meta property="article:tag" content="C4">
+
+  <meta itemprop="name" content="Building a Centralized Documentation Hub">
+  <meta itemprop="description" content="Recently, I wanted to refactor a centralized documentation hub I had put in place around 2 years ago, following the ‘Docs as Code’ principle. At the time I thought what I had done would work really well, but it was never widely adopted, mainly due to tooling limitations. At that time there wasn’t any other viable options, particularly with diagramming, and IDE extensions (VS Code) were non-existent.
+This small series of posts describes how I went about satisfying this requirement which will hopefully be useful to anyone else looking to do something similar, as it’s a common issue I have come across in every place I’ve worked.">
+  <meta itemprop="datePublished" content="2025-07-30T07:01:52+01:00">
+  <meta itemprop="dateModified" content="2025-07-30T07:01:52+01:00">
+  <meta itemprop="wordCount" content="1081">
+  <meta itemprop="keywords" content="docs as code,architecture diagrams">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Building a Centralized Documentation Hub">
+  <meta name="twitter:description" content="Recently, I wanted to refactor a centralized documentation hub I had put in place around 2 years ago, following the ‘Docs as Code’ principle. At the time I thought what I had done would work really well, but it was never widely adopted, mainly due to tooling limitations. At that time there wasn’t any other viable options, particularly with diagramming, and IDE extensions (VS Code) were non-existent.
+This small series of posts describes how I went about satisfying this requirement which will hopefully be useful to anyone else looking to do something similar, as it’s a common issue I have come across in every place I’ve worked.">
+
+	
+  </head><body class="ma0 avenir bg-near-white development is-page is-page page-docs-as-code">
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        Joseph Smith Tech Blog
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/" title="Home page">
+              Home
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/posts/" title="Posts page">
+              Posts
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/profile/" title="Profile page">
+              Profile
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+
+  <article class="page-docs-as-code flex-l mw7 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Building a Centralized Documentation Hub</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-07-30T07:01:52+01:00">July 30, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><p>Recently, I wanted to refactor a centralized documentation hub I had put in place around 2 years ago, following the &lsquo;Docs as Code&rsquo; principle. At the time I thought what I had done would work really well, but it was never widely adopted, mainly due to tooling limitations. At that time there wasn&rsquo;t any other viable options, particularly with diagramming, and IDE extensions (VS Code) were non-existent.</p>
+<p>This small series of posts describes how I went about satisfying this requirement which will hopefully be useful to anyone else looking to do something similar, as it&rsquo;s a common issue I have come across in every place I&rsquo;ve worked.</p>
+<p>Drop any questions or comments at the bottom of the page.</p>
+<h2 id="requirements">Requirements</h2>
+<p>As a brief outline of the requirements, I decided to revisit the user story and see if I could implement anything better. Here&rsquo;s a rough user story for implementation:</p>
+<blockquote>
+<p><strong>As a</strong> developer<br>
+<strong>I want</strong> to be able to document how a system works<br>
+<strong>And I want</strong> to be able to construct architecture diagrams that link to other projects mine depends on<br>
+<strong>So that</strong> other team members can understand the system more easily<br>
+<strong>And</strong> complete future work on it more efficiently<br>
+<strong>And</strong> I want to be able to do this in a single place</p>
+</blockquote>
+<p>Let&rsquo;s look next at how to fulfil this criteria.</p>
+<h2 id="phase-1-conventions">Phase 1: Conventions</h2>
+<p>The first thing you&rsquo;ll want to determine is a project folder structure that both new and existing projects can easily integrate.</p>
+<p>I highly recommend encouraging the production of your docs as distinct areas. Another bonus to this structuring is being able to more easily restrict access to these areas by roles - useful for SSG in particular which by default will use folder structure navigation. Also having a containing folder makes production and deployment easier, as well as switching build tools at a later date if required.</p>
+<h3 id="the-four-docs-as-code-pillars">The Four Docs as Code Pillars</h3>
+<p><img src="/images/four-pillars.jpg" alt="Four Pillars"></p>
+<p>As we all love acronyms, here&rsquo;s one I use to describe the pillars of a successful docs as code implementation and the minimal standard you should strive for:</p>
+<p><strong>TAGD:</strong></p>
+<ul>
+<li>Technical: Developer only notes. Think where secrets are stored, how to run apps locally, etc.</li>
+<li>ADR: Architecture Decision Records - Historical context of important architectural changes.</li>
+<li>Guides: End user guides, manuals, first line support guides/FAQ.</li>
+<li>Diagramming: Architecture and Workflow diagrams.</li>
+</ul>
+<p>Taking the pillars defined above to a folder structure convention would look along the lines of:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>project/
+</span></span><span style="display:flex;"><span>    docs/               # Top level containing folder
+</span></span><span style="display:flex;"><span>        docs/           # All docs
+</span></span><span style="display:flex;"><span>            adr/        # Convention
+</span></span><span style="display:flex;"><span>            guides/     # Convention
+</span></span><span style="display:flex;"><span>            technical/  # Convention
+</span></span><span style="display:flex;"><span>            folder/     # You can add any other content any way you like with SSG
+</span></span><span style="display:flex;"><span>        diagrams/       # Diagrams
+</span></span></code></pre></div><p>With that in place, we can now look at what tools we can use for production of these items.</p>
+<h2 id="phase-2-toolset">Phase 2: Toolset</h2>
+<p>After some research, I settled on the following which satisfies the story above and are widely used:</p>
+<ul>
+<li><a href="https://likec4.dev/">LikeC4</a> (Diagramming - Architecture)</li>
+<li><a href="https://github.com/npryce/adr-tools">adr-tools</a> (ADR / Architecture Decision Records)</li>
+<li><a href="https://docusaurus.io/">Docusaurus</a> (SSG / Static Site Generator)</li>
+<li>Azure Static Web App (Hosting)</li>
+<li><a href="https://www.markdownguide.org/">Markdown</a> (General doc production)</li>
+<li><a href="https://mermaid.ai/web/">Mermaid</a> (Diagramming - Workflows, User Journeys etc.)</li>
+</ul>
+<p>I&rsquo;ll briefly explain each of these below.</p>
+<h3 id="diagrams">Diagrams</h3>
+<p>I had used Structurizr as part of the previous attempt at team wide documentation adoption, but this failed due to some limitations it has:</p>
+<ul>
+<li>No IDE live editing - you had to use their web based DSL editor - which also had limitations - not able to view linked ADR, docs, etc.</li>
+<li>Paid subscription per DSL to be hosted there (Note: you can self host for free an on prem, but still doesn&rsquo;t solve the above)</li>
+<li>Diagram UI - though ok - wasn&rsquo;t that modern looking</li>
+</ul>
+<p>The first step alone contributed as the main fail factor, as simple as it seems to use another window to do live DSL edits, it still was nonetheless a step outside the IDE nobody really wants to take.</p>
+<h4 id="likec4">LikeC4</h4>
+<p>LikeC4 was the answer to those limitations. It has an official VS Code extension, with live previews, and a much better UI, as well as being free. It also has multiple production options:</p>
+<ul>
+<li>SSG - Output all docs to a single static standalone website.</li>
+<li>React Components - Output to a react component you can then embed in another React app.</li>
+</ul>
+<p>I tested both of these, and you can easily use either depending on your own criteria. If you wanted to host the diagrams separately, you could deploy the generated single website to it&rsquo;s own domain (diagrams.your-company.com etc.) which would be really straight forward.</p>
+<p>For our purposes, I wanted to be able to embed these into and alongside the other documentation forms. This led me down the route of looking at having a parent React app that was able to display both the diagram components as well as the other docs written.</p>
+<h3 id="adr">ADR</h3>
+<p><code>adr-tools</code> is a simple cli tool that generates ADR&rsquo;s for you in the standardized template format. This is important as other tools can utilize displaying these alongside diagrams, for example (LikeC4 currently does not support, but I expect it to eventually. Structurizr does support linking to ADRs).</p>
+<h3 id="docusaurus">Docusaurus</h3>
+<p>Docusaurus is another SSG, importantly React based which made it easy to choose to function as the parent app I needed to host all the docs including the diagrams. As the diagrams through LikeC4 were being built as a React component, it means that component can be integrated as a Page within Docusaurus.</p>
+<p>It also supports displaying Mermaid diagrams (through an additional package and simple config) which we had quite a lot of for user journeys and user workflows.</p>
+<h3 id="azure-static-web-apps">Azure Static Web Apps</h3>
+<p>This was another easy choice given the use of Docusaurus as an SSG so nothing complicated was required other than to simply host the static files. We were also able to use the built in auth for SSO via Entra ID so that ticked another box.</p>
+<h3 id="markdown">Markdown</h3>
+<p>Markdown is a widely adopted lightweight markup language used for formatting text, so is ideal for use in written docs.</p>
+<h3 id="mermaid">Mermaid</h3>
+<p>Mermaid is a great tool supporting all sorts of diagrams - I have found the sequence, requirement, user journey, and mind maps to be most useful as great visual representations of flows through an application. There is also experimental support for LikeC4 as of writing, which I&rsquo;ve not used yet.</p>
+<h3 id="composing-documentation">Composing documentation</h3>
+<p>Now we have our toolchain in place, we can proceed to integrating them into our development workflow.</p>
+<hr>
+<p>In Part 2 I&rsquo;ll go through details of how I wired all this up and setup the deployment.</p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/documentation/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Documentation</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/c4/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">C4</a>
+   </li>
+  
+</ul>
+
+      
+    </div></article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/" >
+    &copy;  Joseph Smith Tech Blog 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

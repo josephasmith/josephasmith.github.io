@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Joseph Smith Tech Blog</title>
-    <link>http://localhost:1313/</link>
-    <description>Recent content on Joseph Smith Tech Blog</description>
+    <title>Blog on Joseph Smith Tech Blog</title>
+    <link>http://localhost:1313/categories/blog/</link>
+    <description>Recent content in Blog on Joseph Smith Tech Blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 23 Feb 2026 13:14:10 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Profile</title>
-      <link>http://localhost:1313/profile/</link>
-      <pubDate>Mon, 23 Feb 2026 13:14:10 +0000</pubDate>
-      <guid>http://localhost:1313/profile/</guid>
-      <description>&lt;h1 id=&#34;about-me&#34;&gt;About Me&lt;/h1&gt;&#xA;&lt;p&gt;I&amp;rsquo;ve been working as a software developer for 22 years, mainly in the Microsoft ecosystem and more recently cloud native using various Azure services. I adopt a &lt;em&gt;TDD&lt;/em&gt; approach and like to follow where possible &lt;em&gt;Clean Architecture&lt;/em&gt; and &lt;em&gt;SOLID&lt;/em&gt; principles to achieve the highest quality code.&lt;/p&gt;&#xA;&lt;p&gt;Outside of software, I&amp;rsquo;m a Level 3 Qualified Personal Trainer, Husband, Father and have interest in a few sports - Football, Tennis, American Football, and Boxing.&lt;/p&gt;</description>
-    </item>
+    <lastBuildDate>Wed, 30 Jul 2025 07:01:52 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Building a Centralized Documentation Hub</title>
       <link>http://localhost:1313/posts/docs-as-code/</link>

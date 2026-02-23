@@ -2,10 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/categories/</loc>
-  </url><url>
     <loc>http://localhost:1313/</loc>
+    <lastmod>2026-02-23T13:14:10+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/profile/</loc>
+    <lastmod>2026-02-23T13:14:10+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/blog/</loc>
+    <lastmod>2025-07-30T07:01:52+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/docs-as-code/</loc>
+    <lastmod>2025-07-30T07:01:52+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/c4/</loc>
+    <lastmod>2025-07-30T07:01:52+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/</loc>
+    <lastmod>2025-07-30T07:01:52+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/documentation/</loc>
+    <lastmod>2025-07-30T07:01:52+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2025-07-30T07:01:52+01:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2025-07-30T07:01:52+01:00</lastmod>
   </url>
 </urlset>
