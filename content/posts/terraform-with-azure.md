@@ -1,6 +1,6 @@
 +++
 date = '2025-10-23T18:17:16Z'
-draft = true
+draft = false
 title = 'Terraform With Azure'
 categories = ["Blog"]
 tags = ["Terraform", "Azure"]

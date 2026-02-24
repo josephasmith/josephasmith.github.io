@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Joseph Smith Tech Blog</title>
+    <title>Posts on Joseph Smith Tech Blog</title>
     <link>http://localhost:1313/posts/</link>
-    <description>Recent content on Joseph Smith Tech Blog</description>
+    <description>Recent content in Posts on Joseph Smith Tech Blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 23 Oct 2025 18:17:16 +0000</lastBuildDate>

@@ -26,7 +26,7 @@ theme = 'hugo-theme-m10c'
 [params]
   author = 'Joe Smith'
   description = 'Software Development with Azure, .NET, React'
-  avatar = '/images/IMG_5502-3.jpg'
+  avatar = '/images/IMG_5502-3.JPG'
   menu_item_separator = ' / '
 
 [[params.social]]
