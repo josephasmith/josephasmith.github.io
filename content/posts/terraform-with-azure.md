@@ -1,5 +1,5 @@
 +++
-date = '2026-02-23T18:17:16Z'
+date = '2025-10-23T18:17:16Z'
 draft = true
 title = 'Terraform With Azure'
 categories = ["Blog"]
