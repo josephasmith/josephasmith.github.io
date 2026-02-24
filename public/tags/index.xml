@@ -6,8 +6,22 @@
     <description>Recent content in Tags on Joseph Smith Tech Blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 30 Jul 2025 07:01:52 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 23 Feb 2026 18:17:16 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Azure</title>
+      <link>http://localhost:1313/tags/azure/</link>
+      <pubDate>Mon, 23 Feb 2026 18:17:16 +0000</pubDate>
+      <guid>http://localhost:1313/tags/azure/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Terraform</title>
+      <link>http://localhost:1313/tags/terraform/</link>
+      <pubDate>Mon, 23 Feb 2026 18:17:16 +0000</pubDate>
+      <guid>http://localhost:1313/tags/terraform/</guid>
+      <description></description>
+    </item>
     <item>
       <title>C4</title>
       <link>http://localhost:1313/tags/c4/</link>

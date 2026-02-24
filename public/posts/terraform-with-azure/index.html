@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Terraform With Azure | Joseph Smith Tech Blog</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Using Terraform with Azure
+This post is a quick walkthrough of how you can use Terraform with Azure, replacing the need to create all the required infrastructure manually through either the Azure Portal or the CLI.
+What Is Terraform?
+If you&rsquo;re not familiar with Terraform, it&rsquo;s an IaC (Infrastructure as Code) tool which allows you to define the infrastructure your application requires to run on within a set of files you can place within the code repository. Why is that so useful? Alongside similar workflow tools such as Docs as Code, it allows you to:">
+    <meta name="generator" content="Hugo 0.156.0">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/posts/terraform-with-azure/">
+    
+
+    
+    
+    <meta property="og:url" content="http://localhost:1313/posts/terraform-with-azure/">
+  <meta property="og:site_name" content="Joseph Smith Tech Blog">
+  <meta property="og:title" content="Terraform With Azure">
+  <meta property="og:description" content="Using Terraform with Azure This post is a quick walkthrough of how you can use Terraform with Azure, replacing the need to create all the required infrastructure manually through either the Azure Portal or the CLI.
+What Is Terraform? If you’re not familiar with Terraform, it’s an IaC (Infrastructure as Code) tool which allows you to define the infrastructure your application requires to run on within a set of files you can place within the code repository. Why is that so useful? Alongside similar workflow tools such as Docs as Code, it allows you to:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-02-23T18:17:16+00:00">
+    <meta property="article:modified_time" content="2026-02-23T18:17:16+00:00">
+    <meta property="article:tag" content="Terraform">
+    <meta property="article:tag" content="Azure">
+
+  <meta itemprop="name" content="Terraform With Azure">
+  <meta itemprop="description" content="Using Terraform with Azure This post is a quick walkthrough of how you can use Terraform with Azure, replacing the need to create all the required infrastructure manually through either the Azure Portal or the CLI.
+What Is Terraform? If you’re not familiar with Terraform, it’s an IaC (Infrastructure as Code) tool which allows you to define the infrastructure your application requires to run on within a set of files you can place within the code repository. Why is that so useful? Alongside similar workflow tools such as Docs as Code, it allows you to:">
+  <meta itemprop="datePublished" content="2026-02-23T18:17:16+00:00">
+  <meta itemprop="dateModified" content="2026-02-23T18:17:16+00:00">
+  <meta itemprop="wordCount" content="747">
+  <meta itemprop="keywords" content="terraform,azure,azure functions">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Terraform With Azure">
+  <meta name="twitter:description" content="Using Terraform with Azure This post is a quick walkthrough of how you can use Terraform with Azure, replacing the need to create all the required infrastructure manually through either the Azure Portal or the CLI.
+What Is Terraform? If you’re not familiar with Terraform, it’s an IaC (Infrastructure as Code) tool which allows you to define the infrastructure your application requires to run on within a set of files you can place within the code repository. Why is that so useful? Alongside similar workflow tools such as Docs as Code, it allows you to:">
+
+	
+  </head><body class="ma0 avenir bg-near-white development is-page is-page page-terraform-with-azure">
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        Joseph Smith Tech Blog
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/" title="Home page">
+              Home
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/posts/" title="Posts page">
+              Posts
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/profile/" title="Profile page">
+              Profile
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+
+  <article class="page-terraform-with-azure flex-l mw7 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Terraform With Azure</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-02-23T18:17:16Z">February 23, 2026</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><h1 id="using-terraform-with-azure">Using Terraform with Azure</h1>
+<p>This post is a quick walkthrough of how you can use Terraform with Azure, replacing the need to create all the required infrastructure manually through either the Azure Portal or the CLI.</p>
+<h2 id="what-is-terraform">What Is Terraform?</h2>
+<p>If you&rsquo;re not familiar with Terraform, it&rsquo;s an <strong>IaC</strong> (Infrastructure as Code) tool which allows you to define the infrastructure your application requires to run on within a set of files you can place within the code repository. Why is that so useful? Alongside similar workflow tools such as <a href="/posts/docs-as-code">Docs as Code</a>, it allows you to:</p>
+<ul>
+<li>Stay within your code editor to define the configurations</li>
+<li>Keep things centralized and source controlled</li>
+<li>Define multiple environments without replication</li>
+<li>Can be used within deployment pipelines</li>
+<li>Spin up quick proof of concepts</li>
+<li>Easily and quickly delete redundant resources</li>
+</ul>
+<p>Amongst others. Let&rsquo;s dig a bit deeper and see just how easy it is to utilize.</p>
+<h2 id="installation">Installation</h2>
+<p>On Windows, you will want to download the latest binary and extract that to a location available on your <code>PATH</code> env variable, or optionally place it somewhere else and add that location to your <code>PATH</code> so your CLI of choice can run the <code>terraform</code> commands.</p>
+<h2 id="files-and-conventions">Files and Conventions</h2>
+<p>Although you can put all the terraform config in a single file, I&rsquo;d recommend splitting them out into the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>project/
+</span></span><span style="display:flex;"><span>    infra/            # Top level containing folder - named whatever
+</span></span><span style="display:flex;"><span>        providers.tf  # Define provider
+</span></span><span style="display:flex;"><span>        main.tf       # Define resources to create
+</span></span><span style="display:flex;"><span>        variables.tf  # Variables to use within the resources
+</span></span><span style="display:flex;"><span>        outputs.tf    # Store the output of the results of applying the terraform
+</span></span></code></pre></div><p>Nothing special as you can see but it does make the intent clearer to any other developer working on or viewing the repository.</p>
+<h3 id="example-definition">Example definition</h3>
+<p>As we are using Azure, the provider we want to use can be defined as follows in our <code>main.tf</code> file:</p>
+<pre tabindex="0"><code>// main.tf
+terraform {
+  required_providers {
+    azurerm = {
+      source  = &#34;hashicorp/azurerm&#34;
+      version = &#34;&gt;= 4.6.0&#34;
+    }
+  }
+
+  required_version = &#34;&gt;= 1.14.5&#34;
+}
+</code></pre><p>The remainder of the file is to define all the required resources we are going to need to run our function app (or any other type). We will need, typically:</p>
+<ul>
+<li>A resource group</li>
+<li>Storage account</li>
+<li>Storage container</li>
+<li>App Insights</li>
+<li>Service Plan</li>
+</ul>
+<p>Finally, you will want to define the application resource - function app, web app, SWA, etc. In the example below I have used a Linux based function app on a flex consumption plan:</p>
+<pre tabindex="0"><code>resource &#34;azurerm_resource_group&#34; &#34;rg&#34; {
+  name     = var.resource_group_name
+  location = &#34;location&#34;
+}
+
+resource &#34;azurerm_storage_account&#34; &#34;sa&#34; {
+  name                     = var.storage_account_name
+  resource_group_name      = azurerm_resource_group.rg.name
+  location                 = azurerm_resource_group.rg.location
+  account_tier             = &#34;Standard&#34;
+  account_replication_type = &#34;LRS&#34;
+}
+
+resource &#34;azurerm_storage_container&#34; &#34;sc&#34; {
+  name                  = var.storage_account_container
+  storage_account_name  = azurerm_storage_account.sa.name
+  container_access_type = &#34;private&#34;
+}
+
+resource &#34;azurerm_application_insights&#34; &#34;ai&#34; {
+  name                = var.app_insights_name
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  application_type    = &#34;web&#34;
+}
+
+resource &#34;azurerm_service_plan&#34; &#34;sp&#34; {
+  name                = var.service_plan_name
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  sku_name            = &#34;FC1&#34;
+  os_type             = &#34;Linux&#34;
+}
+
+resource &#34;azurerm_function_app_flex_consumption&#34; &#34;fa&#34; {
+  name                       = var.function_app_name
+  location                   = azurerm_resource_group.rg.location
+  resource_group_name        = azurerm_resource_group.rg.name
+  service_plan_id            = azurerm_service_plan.sp.id
+  storage_access_key         = azurerm_storage_account.sa.primary_access_key
+  storage_authentication_type = &#34;StorageAccountConnectionString&#34;
+  storage_container_type     = &#34;blobContainer&#34;
+  storage_container_endpoint = &#34;${azurerm_storage_account.sa.primary_blob_endpoint}${azurerm_storage_container.sc.name}&#34;
+  runtime_name = &#34;dotnet-isolated&#34;
+  runtime_version = &#34;10.0&#34;
+
+  site_config {}
+}
+</code></pre><p>As you can see, I&rsquo;ve referenced all the names for each resource from the <code>variables.tf</code> file. A typical entry in that will be:</p>
+<pre tabindex="0"><code>// variables.tf
+variable &#34;storage_account_name&#34; {
+  default = &#34;your-name-here&#34;
+}
+// .. other vars
+</code></pre><p>Now that we have our definitions, we can use the terraform commands to see if they work.</p>
+<h3 id="plan-and-apply">Plan and Apply</h3>
+<p>First, we can format and validate our definitions:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>terraform fmt &amp;&amp; terraform validate
+</span></span></code></pre></div><p><img src="/images/terraform-validate.png" alt="Terraform Validate"></p>
+<p>If you have success as above, your next command will be to create the plan, which allows you to confirm what will be created is correct before you apply it to the portal (this will be outputted to the console):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>terraform plan -out main.tfplan
+</span></span></code></pre></div><p>After inspection of the plan, terraform indicates what the next step is:</p>
+<p><img src="/images/terraform-apply.png" alt="Terraform Apply"></p>
+<p>After executing this final step, you can then navigate to the portal to confirm your resource group is created, and all your resources defined underneath this group are there also:</p>
+<p><img src="/images/portal-success.png" alt="Azure Portal Confirmation"></p>
+<h3 id="what-next">What Next?</h3>
+<p>With our required infrastructure now in place, we can spend the rest of our time developing our app and then deploying it - whether it be function app, web app, or SWA. That process is outside the scope of this post but with VS Code or the Azure CLI this can also be done with minimal effort and the whole process from scratch to deployment really does represent modern rapid development.</p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/terraform/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Terraform</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/azure/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Azure</a>
+   </li>
+  
+</ul>
+
+      
+    </div></article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/" >
+    &copy;  Joseph Smith Tech Blog 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
