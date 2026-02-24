@@ -9,6 +9,7 @@ comments = true
 keywords = ['docs as code', 'architecture diagrams']
 +++
 
+
 Recently, I wanted to refactor a centralized documentation hub I had put in place around 2 years ago, following the 'Docs as Code' principle. At the time I thought what I had done would work really well, but it was never widely adopted, mainly due to tooling limitations. At that time there wasn't any other viable options, particularly with diagramming, and IDE extensions (VS Code) were non-existent.
 
 This small series of posts describes how I went about satisfying this requirement which will hopefully be useful to anyone else looking to do something similar, as it's a common issue I have come across in every place I've worked.

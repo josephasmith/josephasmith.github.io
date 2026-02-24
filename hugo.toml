@@ -1,7 +1,7 @@
 baseURL = 'https://josephasmith.github.io/'
 languageCode = 'en-us'
 title = 'Joseph Smith Tech Blog'
-theme = 'ananke'
+theme = 'hugo-theme-m10c'
 
 [frontmatter]
   date = ['date', 'publishdate', 'pubdate', 'published', 'lastmod', 'modified']
@@ -22,3 +22,21 @@ theme = 'ananke'
     name = 'Profile'
     pageRef = '/profile'
     weight = 20
+
+[params]
+  author = 'Joe Smith'
+  description = 'Software Development with Azure, .NET, React'
+  avatar = '/images/IMG_5502-3.jpg'
+  menu_item_separator = ' / '
+
+[[params.social]]
+  icon = "brand-linkedin"
+  name = "LinkedIn"
+  url = "https://www.linkedin.com/in/joe-smith-9b71433b3/"
+
+[params.style]
+  darkestColor = "#d35050"
+  darkColor = "#212121"
+  lightColor = "#f5e3e0"
+  lightestColor = "#f5f5f5"
+  primaryColor = "#ffffff"
