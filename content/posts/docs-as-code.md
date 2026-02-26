@@ -5,16 +5,13 @@ slug = "docs-as-code"
 title =  "Building a Centralized Documentation Hub"
 categories = ["Blog"]
 tags = ["Documentation", "C4"]
-comments = true
-keywords = ['docs as code', 'architecture diagrams']
+keywords = ['docs as code', 'architecture diagrams', 'swa', 'docusaurus', 'likec4']
 +++
 
 
 Recently, I wanted to refactor a centralized documentation hub I had put in place around 2 years ago, following the 'Docs as Code' principle. At the time I thought what I had done would work really well, but it was never widely adopted, mainly due to tooling limitations. At that time there wasn't any other viable options, particularly with diagramming, and IDE extensions (VS Code) were non-existent.
 
 This small series of posts describes how I went about satisfying this requirement which will hopefully be useful to anyone else looking to do something similar, as it's a common issue I have come across in every place I've worked.
-
-Drop any questions or comments at the bottom of the page.
 
 ## Requirements
 
@@ -78,7 +75,7 @@ I'll briefly explain each of these below.
 
 ### Diagrams
 
-I had used Structurizr as part of the previous attempt at team wide documentation adoption, but this failed due to some limitations it has:
+I had used [Structurizr](https://structurizr.com/) as part of the previous attempt at team wide documentation adoption, but this failed due to some limitations it has:
 
 * No IDE live editing - you had to use their web based DSL editor - which also had limitations - not able to view linked ADR, docs, etc.
 * Paid subscription per DSL to be hosted there (Note: you can self host for free an on prem, but still doesn't solve the above)
@@ -135,4 +132,4 @@ Now we have our toolchain in place, we can proceed to integrating them into our 
 
 ---
 
-In Part 2 I'll go through details of how I wired all this up and setup the deployment.
+[In Part 2](/docs-as-code-2) I'll go through details of how I wired all this up and setup the deployment.
